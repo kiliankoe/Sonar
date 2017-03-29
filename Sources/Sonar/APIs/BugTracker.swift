@@ -7,8 +7,8 @@ import Alamofire
  - OpenRadar:  Open radar system. Authenticated by a non expiring token.
 */
 public enum ServiceAuthentication {
-    case AppleRadar(appleID: String, password: String)
-    case OpenRadar(token: String)
+    case appleRadar(appleID: String, password: String)
+    case openRadar(token: String)
 }
 
 /**

@@ -6,10 +6,10 @@ public class Sonar {
 
     public init(service: ServiceAuthentication) {
         switch service {
-            case .AppleRadar(let appleID, let password):
+            case .appleRadar(let appleID, let password):
                 self.tracker = AppleRadar(appleID: appleID, password: password)
 
-            case .OpenRadar(let token):
+            case .openRadar(let token):
                 self.tracker = OpenRadar(token: token)
         }
     }

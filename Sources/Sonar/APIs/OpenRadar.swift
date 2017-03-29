@@ -35,7 +35,7 @@ class OpenRadar: BugTracker {
         }
 
         self.manager
-            .request(OpenRadarRouter.Create(radar: radar))
+            .request(OpenRadarRouter.create(radar: radar))
             .validate()
             .responseJSON { response in
                 guard case .success = response.result else {

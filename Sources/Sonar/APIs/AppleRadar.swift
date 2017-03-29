@@ -29,7 +29,7 @@ final class AppleRadar: BugTracker {
     */
     func login(closure: @escaping (Result<Void, SonarError>) -> Void) {
         self.manager
-            .request(AppleRadarRouter.Login(appleID: credentials.appleID, password: credentials.password))
+            .request(AppleRadarRouter.login(appleID: credentials.appleID, password: credentials.password))
             .validate()
             .responseString { [weak self] response in
                 guard case let .success(value) = response.result else {
@@ -72,7 +72,7 @@ final class AppleRadar: BugTracker {
         }
 
         self.manager
-            .request(AppleRadarRouter.Products(CSRF: CSRF))
+            .request(AppleRadarRouter.products(CSRF: CSRF))
             .validate()
             .responseJSON { response in
                 guard case let .success(value) = response.result else {
@@ -98,7 +98,7 @@ final class AppleRadar: BugTracker {
             return
         }
 
-        let route = AppleRadarRouter.Create(radar: radar, CSRF: CSRF)
+        let route = AppleRadarRouter.create(radar: radar, CSRF: CSRF)
         let (_, method, headers, body, _) = route.components
         let createMultipart = { (data: MultipartFormData) -> Void in
             data.append(body ?? Data(), withName: "hJsonScreenVal")
